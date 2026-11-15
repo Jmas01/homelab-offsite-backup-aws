@@ -1,0 +1,11 @@
+[Unit]
+Description=Encrypted off-site copy of Immich photo originals to AWS S3
+Wants=network-online.target mnt-pve-data.mount
+After=network-online.target mnt-pve-data.mount
+OnFailure=notify-backup-failure@%n.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flock -n -E 0 /run/s3-offsite-photos.lock /usr/local/sbin/s3-offsite-backup.sh photos
+StandardOutput=append:/var/log/s3-offsite-backup.log
+StandardError=append:/var/log/s3-offsite-backup.log

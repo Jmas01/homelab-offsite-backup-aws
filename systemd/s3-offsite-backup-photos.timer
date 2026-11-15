@@ -1,0 +1,11 @@
+[Unit]
+Description=photos off-site copy to AWS S3 (*-*-* 11:30:00 UTC)
+
+[Timer]
+OnCalendar=*-*-* 11:30:00
+RandomizedDelaySec=10m
+Persistent=true
+Unit=s3-offsite-backup-photos.service
+
+[Install]
+WantedBy=timers.target

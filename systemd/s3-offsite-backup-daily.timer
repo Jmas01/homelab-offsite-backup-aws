@@ -1,0 +1,11 @@
+[Unit]
+Description=daily off-site copy to AWS S3 (*-*-* 10:30:00 UTC)
+
+[Timer]
+OnCalendar=*-*-* 10:30:00
+RandomizedDelaySec=10m
+Persistent=true
+Unit=s3-offsite-backup-daily.service
+
+[Install]
+WantedBy=timers.target

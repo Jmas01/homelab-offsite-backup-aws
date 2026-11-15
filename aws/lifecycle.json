@@ -1,0 +1,32 @@
+{
+  "Rules": [
+    {
+      "ID": "daily-expire-30d",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "daily/" },
+      "Expiration": { "Days": 30 },
+      "NoncurrentVersionExpiration": { "NoncurrentDays": 1 }
+    },
+    {
+      "ID": "weekly-expire-57d",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "weekly/" },
+      "Expiration": { "Days": 57 },
+      "NoncurrentVersionExpiration": { "NoncurrentDays": 1 }
+    },
+    {
+      "ID": "photos-deep-archive",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "photos/" },
+      "Transitions": [ { "Days": 0, "StorageClass": "DEEP_ARCHIVE" } ],
+      "NoncurrentVersionExpiration": { "NoncurrentDays": 180 }
+    },
+    {
+      "ID": "cleanup-markers-and-failed-uploads",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "" },
+      "Expiration": { "ExpiredObjectDeleteMarker": true },
+      "AbortIncompleteMultipartUpload": { "DaysAfterInitiation": 7 }
+    }
+  ]
+}

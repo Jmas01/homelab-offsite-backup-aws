@@ -1,0 +1,11 @@
+[Unit]
+Description=Encrypted off-site copy of database dumps to AWS S3
+Wants=network-online.target mnt-pve-data.mount
+After=network-online.target mnt-pve-data.mount backup-databases.service backup-paperless.service
+OnFailure=notify-backup-failure@%n.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/s3-offsite-backup.sh daily
+StandardOutput=append:/var/log/s3-offsite-backup.log
+StandardError=append:/var/log/s3-offsite-backup.log
