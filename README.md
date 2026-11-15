@@ -1,4 +1,4 @@
-# Off-site Homelab Backup to AWS S3
+# AWS S3 Off-site Homelab Backup
 
 Encrypted, ransomware-resistant off-site backups of a self-hosted homelab (Proxmox, Unraid and self-hosted Docker services) to Amazon S3, for about $1 a month.
 
